@@ -1,8 +1,14 @@
-import gamesAlgoritm from '../src/index.js';
-import { randomCalc, rightAnswer } from '../src/calc.js';
+import { gameRules, gameCondition } from '../src/index.js';
+import { randomCalc, answerCalc } from '../src/calc.js';
 
-const calcCondition = 'What is the result of the expression?';
+const Rules = 'What is the result of the expression?';
 const questionCalc = randomCalc();
-const calcAnswer = rightAnswer();
+const rightAnswerCalc = answerCalc();
 
-gamesAlgoritm(calcCondition, questionCalc, calcAnswer);
+// welcome to the brain games
+gameRules(Rules);
+
+let winsCounter = 0;
+while (winsCounter < 3) {
+  winsCounter = gameCondition(questionCalc, rightAnswerCalc);
+}
