@@ -32,5 +32,5 @@ const isEven = () => {
   if (wins === 3) {
     console.log(`Congratulations, ${userName}!`);
   }
-}
+};
 export default isEven;

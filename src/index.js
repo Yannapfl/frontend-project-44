@@ -1,29 +1,30 @@
 import readlineSync from 'readline-sync';
-import greeiting from './cli.js';
+import greeting from './cli.js';
 
-let gameCondition;
-let wins = 0;
-let userAnswer;
-let question;
-let rightAnswer;
+const userName = greeting();
 
-const gamesAlgoritm = () => {
-  const userName = greeiting();
-  console.log(gameCondition);
-  while (wins < 3) {
-    console.log(`Question: ${question}`);
-    userAnswer = readlineSync.question('Your answer: ');
-    if (rightAnswer === userAnswer) {
-      console.log('Correct!');
-      wins += 1;
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}`);
-      wins = 4;
-    }
-    if (wins === 3) {
-      console.log(`Congratulations, ${userName}!`);
-    }
-  }
+const gameRules = (Rules) => {
+  console.log(Rules);
 };
 
-export default gamesAlgoritm;
+export { gameRules };
+
+let wins = 0;
+
+const gameCondition = (questionGame, rightAnswer) => {
+  console.log(`Question: ${questionGame}`);
+  const userAnswer = readlineSync.question('Your answer: ');
+  if (`${rightAnswer}` === `${userAnswer}`) {
+    console.log('Correct!');
+    wins += 1;
+  } else {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}`);
+    wins = 4;
+  }
+  if (wins === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  }
+  return wins;
+};
+
+export { gameCondition };
