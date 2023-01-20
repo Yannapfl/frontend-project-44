@@ -32,7 +32,7 @@ const Rules = 'What is the result of the expression?';
 // connect variables and functions with index.js
 const isCalc = () => {
   gameRules(Rules);
-  isGameCondition(generateCalc, countRightAnswerCalc);
+  isGameCondition(generateCalc(), countRightAnswerCalc());
   runCycleOfWins();
 };
 
