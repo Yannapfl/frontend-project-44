@@ -21,12 +21,22 @@ const isGameCondition = (isQuestion, isRightAnswer) => {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${isRightAnswer}'.`);
     wins = 4;
   }
-  if (wins === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  } else {
-    console.log(`Let's try again, ${userName}`);
-  }
   return wins;
 };
 
 export { isGameCondition };
+
+let winsCount = 0;
+const runCycleOfWins = () => {
+  while (winsCount < 3) {
+    winsCount = isGameCondition();
+  }
+  if (wins === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
+    console.log(`Let's try again, ${userName}!`);
+  }
+  return winsCount;
+};
+
+export { runCycleOfWins };
