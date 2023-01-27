@@ -23,7 +23,7 @@ const generateConsidences = () => {
   const considences = [];
   const firstNumber = generateRandomNumber(100);
   const secondNumber = generateRandomNumber(100);
-  considences[0] = `${firstNumber}  ${secondNumber}`;
+  considences[0] = `${firstNumber} ${secondNumber}`;
   considences[1] = countRightAnswerGcd(firstNumber, secondNumber);
   return considences;
 };
