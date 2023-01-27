@@ -3,40 +3,26 @@ import greeting from './cli.js';
 
 const userName = greeting();
 
-const gameRules = (Rules) => { // description of game's rules
-  console.log(Rules);
-};
-
-export { gameRules };
-
-let wins = 0;
-// comparing the user's answer to the correct one
-const isGameCondition = (isQuestion, isRightAnswer) => {
-  console.log(`Question: ${isQuestion}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (`${isRightAnswer}` === `${userAnswer}`) {
-    console.log('Correct!');
-    wins += 1;
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${isRightAnswer}'.`);
-    wins = 4;
+const startAlgoritm = (rules, generateConsidences) => {
+  console.log(rules);
+  let wins = 0;
+  while (wins < 3) { // start a loop
+    const [questionGame, answerGame] = generateConsidences(); // add considences
+    console.log(`Question: ${questionGame}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (`${answerGame}` === `${userAnswer}`) { // response user's and right answers
+      console.log('Correct!');
+      wins += 1;
+      if (wins === 3) { // three wins in a row
+        console.log(`Congratulations, ${userName}!`);
+      }
+    } else {
+      wins = 4; // losing game
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answerGame}'.\nLet's try again, ${userName}!`);
+      return wins;
+    }
   }
   return wins;
 };
 
-export { isGameCondition };
-
-let winsCount = 0;
-const runCycleOfWins = () => {
-  while (winsCount < 3) {
-    winsCount = isGameCondition();
-  }
-  if (wins === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  } else {
-    console.log(`Let's try again, ${userName}!`);
-  }
-  return winsCount;
-};
-
-export { runCycleOfWins };
+export default startAlgoritm;
