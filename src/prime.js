@@ -2,7 +2,7 @@ import startAlgoritm from './index.js';
 import { generateRandomNumber } from './even.js';
 
 // add individual rules
-const Rules = 'Answer "yes" if given number is prime. Otherwise answer "no".Answer "yes" if given number is prime. Otherwise answer "no".';
+const Rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const countRightAnswerPrime = (number) => { // generate right answer
   let result;
