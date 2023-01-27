@@ -5,22 +5,22 @@ const Rules = 'What number is missing in the progression?'; // add individual ru
 
 const generateConsidences = () => {
   const firstNumber = generateRandomNumber(10);
-  let nextNumber = 0;
+  let nextNumber = firstNumber;
   const d = generateRandomNumber(10); // arithmetic progression difference
-  const i = 0;
+  let i = 0;
   const numbersSeries = [firstNumber];
   while (i < 7) {
     nextNumber += d;
     numbersSeries.push(nextNumber);
+    i += 1;
   }
-  console.log(numbersSeries);
-  const questionSeries = numbersSeries;
-  const secretNumber = generateRandomNumber(7);
-  console.log(secretNumber);
-  questionSeries[secretNumber] === '..';
   const considences = [];
+  const questionSeries = numbersSeries;
+  const secretIndex = generateRandomNumber(8); // generate random hidden index position
+  considences[1] = numbersSeries[secretIndex]; // describe right answer
+
+  questionSeries[secretIndex] = '..';
   considences[0] = questionSeries; // array for question
-  considences[1] = numbersSeries[secretNumber]; // right answer
   return considences;
 };
 
