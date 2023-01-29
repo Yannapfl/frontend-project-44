@@ -4,30 +4,20 @@ import startAlgoritm from '../index.js';
 const generateRandomNumber = (number) => Math.floor(Math.random() * number);
 export { generateRandomNumber };
 
-// generate right answer
-const countRightAnswerEven = (randomNumber) => {
-  let rightAnswerEven;
-  if (randomNumber % 2 === 0) {
-    rightAnswerEven = 'yes';
-  } else {
-    rightAnswerEven = 'no';
-  }
-  return rightAnswerEven;
-};
+const isEven = (number) => number % 2 === 0;
 
 const generateConsidences = () => {
   const considences = [];
-  considences[0] = generateRandomNumber(100);
-  considences[1] = countRightAnswerEven(considences[0]);
+  considences[0] = generateRandomNumber(100); // max number 99
+  considences[1] = isEven(considences[0]) ? 'yes' : 'no';
   return considences;
 };
 
-// add individual conditions for the Calculator
-const Rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+const descriptionEven = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 // connect variables and functions with index.js
-const isEven = () => {
-  startAlgoritm(Rules, generateConsidences);
+const runEven = () => {
+  startAlgoritm(descriptionEven, generateConsidences);
 };
 
-export default isEven;
+export default runEven;
