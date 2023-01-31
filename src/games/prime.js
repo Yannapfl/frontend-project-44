@@ -1,31 +1,26 @@
-import startAlgoritm from './index.js';
+import startAlgoritm from '../index.js';
 import { generateRandomNumber } from './even.js';
 
-// add individual rules
-const Rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-const countRightAnswerPrime = (number) => { // generate right answer
-  let result;
+const isPrime = (number) => {
   for (let i = 2; i < number; i += 1) {
     if (number % i === 0) {
-      result = 'no';
-      return result;
+      return false;
     }
   }
-  result = 'yes';
-  return result;
+  return true;
 };
 
-const generateConsidences = () => {
-  const considences = [];
-  considences[0] = generateRandomNumber(50);
-  considences[1] = countRightAnswerPrime(considences[0]);
-  return considences;
+const generateConsidencesPrime = () => {
+  const questionPrime = generateRandomNumber(50); // max number is 49;
+  const answerPrime = isPrime(questionPrime) ? 'yes' : 'no';
+  return [questionPrime, answerPrime];
 };
+
+const descriptionPrime = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 // connect variables and functions with index.js
-const isPrime = () => {
-  startAlgoritm(Rules, generateConsidences);
+const runPrime = () => {
+  startAlgoritm(descriptionPrime, generateConsidencesPrime);
 };
 
-export default isPrime;
+export default runPrime;

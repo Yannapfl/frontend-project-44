@@ -1,15 +1,9 @@
-import startAlgoritm from './index.js';
+import startAlgoritm from '../index.js';
 import { generateRandomNumber } from './even.js';
 
-const Rules = 'Find the greatest common divisor of given numbers.'; // add individual rules
-
-const countRightAnswerGcd = (a, b) => { // generate right answer
-  let maxGcd;
-  if (a > b) {
-    maxGcd = b;
-  } else {
-    maxGcd = a;
-  }
+const countRightAnswerGcd = (a, b) => {
+  // maxGcd is the smallest number of two variables, when a % b === 0 and contrariwise
+  let maxGcd = (a > b) ? b : a;
   while (maxGcd > 0) {
     if ((a % maxGcd === 0) && (b % maxGcd === 0)) {
       return maxGcd;
@@ -19,18 +13,20 @@ const countRightAnswerGcd = (a, b) => { // generate right answer
   return maxGcd;
 };
 
-const generateConsidences = () => {
-  const considences = [];
-  const firstNumber = generateRandomNumber(100);
+const generateConsidencesGcd = () => {
+  const firstNumber = generateRandomNumber(100); // max number is 99
   const secondNumber = generateRandomNumber(100);
-  considences[0] = `${firstNumber} ${secondNumber}`;
-  considences[1] = countRightAnswerGcd(firstNumber, secondNumber);
-  return considences;
+
+  const questionGcd = `${firstNumber} ${secondNumber}`;
+  const answerGcd = countRightAnswerGcd(firstNumber, secondNumber);
+  return [questionGcd, answerGcd];
 };
+
+const descriptionGcd = 'Find the greatest common divisor of given numbers.';
 
 // connect variables and functions with index.js
-const isGcd = () => {
-  startAlgoritm(Rules, generateConsidences);
+const runGcd = () => {
+  startAlgoritm(descriptionGcd, generateConsidencesGcd);
 };
 
-export default isGcd;
+export default runGcd;
