@@ -1,28 +1,26 @@
 import readlineSync from 'readline-sync';
 import greeting from './cli.js';
 
-const userName = greeting();
-
-const startAlgoritm = (rules, generateConsidences) => {
+// eslint-disable-next-line consistent-return
+const startAlgoritm = (rules, generateRound) => {
+  const userName = greeting();
   console.log(rules);
-  let wins = 0;
-  while (wins < 3) { // start a loop
-    const [questionGame, answerGame] = generateConsidences(); // add considences
+  const countWins = 3;
+  for (let i = 1; i <= countWins; i += 1) {
+    const [questionGame, answerGame] = generateRound(); // add individual considences of games
     console.log(`Question: ${questionGame}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (`${answerGame}` === `${userAnswer}`) { // response user's and right answers
-      console.log('Correct!');
-      wins += 1;
-      if (wins === 3) { // three wins in a row
-        console.log(`Congratulations, ${userName}!`);
-      }
+
+    if (`${answerGame}` !== `${userAnswer}`) { // response user's and right answers
+      return console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answerGame}'.\nLet's try again, ${userName}!`);
+    // eslint-disable-next-line no-else-return
     } else {
-      wins = 4; // losing game
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answerGame}'.\nLet's try again, ${userName}!`);
-      return wins;
+      console.log('Correct!');
+      if (i === countWins) { // three wins in a row
+        return console.log(`Congratulations, ${userName}!`);
+      }
     }
   }
-  return wins;
 };
 
 export default startAlgoritm;
