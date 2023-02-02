@@ -6,15 +6,19 @@
 <h2>It's my first project on <a href="https://ru.hexlet.io/" target="_blank">Hexlet</a></h2>
 <h3>Description</h3>
 <p>Set of 5 mathematical games. You must answer correctly three times in a row to win each game. If the answer is wrong, you can start any game again.
-<ul>Games:
+<ul><h4>Games:</h4>
     <li>brain-even</li>
     <li>brain-calc</li>
     <li>brain-gcd</li>
     <li>brain-progression</li>
     <li>brain-prime</li>
 </ul>
+Examples of game implementations can be seen below.
 </p>
-<h4>Just write the name of the game you want to play!</h4>
+<h4>Just write the name of the game you want to play in the terminal!</h4>
+
+<h3>Installation</h3>
+<p>JavaScript interpreter (e.g. node.js)</p>
 
 <h3>Even or not</h3>
 <a href="https://asciinema.org/a/fzSeKwFdA68gEEKxMSYVFGmOQ" target="_blank"><img src="https://asciinema.org/a/fzSeKwFdA68gEEKxMSYVFGmOQ.svg" /></a>
