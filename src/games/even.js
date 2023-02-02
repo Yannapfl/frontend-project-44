@@ -1,21 +1,18 @@
 import startAlgoritm from '../index.js';
-
-const generateRandomNumber = (number) => Math.floor(Math.random() * number);
-export { generateRandomNumber };
+import generateRandomNumber from '../helpers.js';
 
 const isEven = (number) => number % 2 === 0;
 
-const generateConsidencesEven = () => {
+const generateEven = () => {
   const questionEven = generateRandomNumber(100); // max number 99
   const answerEven = isEven(questionEven) ? 'yes' : 'no';
   return [questionEven, answerEven];
 };
 
-const descriptionEven = 'Answer "yes" if the number is even, otherwise answer "no".';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-// connect variables and functions with index.js
 const runEven = () => {
-  startAlgoritm(descriptionEven, generateConsidencesEven);
+  startAlgoritm(description, generateEven);
 };
 
 export default runEven;

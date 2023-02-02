@@ -1,5 +1,5 @@
 import startAlgoritm from '../index.js';
-import { generateRandomNumber } from './even.js';
+import generateRandomNumber from '../helpers.js';
 
 const countRightAnswerGcd = (a, b) => {
   // maxGcd is the smallest number of two variables, when a % b === 0 and contrariwise
@@ -13,20 +13,21 @@ const countRightAnswerGcd = (a, b) => {
   return maxGcd;
 };
 
-const generateConsidencesGcd = () => {
-  const firstNumber = generateRandomNumber(100); // max number is 99
-  const secondNumber = generateRandomNumber(100);
+const maxNumber = 100;
+
+const getGCD = () => {
+  const firstNumber = generateRandomNumber(maxNumber);
+  const secondNumber = generateRandomNumber(maxNumber);
 
   const questionGcd = `${firstNumber} ${secondNumber}`;
-  const answerGcd = countRightAnswerGcd(firstNumber, secondNumber);
+  const answerGcd = String(countRightAnswerGcd(firstNumber, secondNumber));
   return [questionGcd, answerGcd];
 };
 
-const descriptionGcd = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
-// connect variables and functions with index.js
 const runGcd = () => {
-  startAlgoritm(descriptionGcd, generateConsidencesGcd);
+  startAlgoritm(description, getGCD);
 };
 
 export default runGcd;

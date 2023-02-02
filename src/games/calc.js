@@ -1,7 +1,8 @@
 import startAlgoritm from '../index.js';
-import { generateRandomNumber } from './even.js';
+import generateRandomNumber from '../helpers.js';
 
-const mathOperators = ['+', '-', '*'];
+const operators = ['+', '-', '*'];
+const maxNumber = 10;
 
 const calculate = (a, b, operator) => {
   switch (operator) {
@@ -9,26 +10,27 @@ const calculate = (a, b, operator) => {
       return (a + b);
     case '-':
       return (a - b);
-    default:
+    case '*':
       return (a * b);
+    default:
+      throw new Error(`Unknown order state: '${operators}'!`);
   }
 };
 
-const generateConsidencesCalc = () => {
-  // random for choosing an index in mathOperators (max number 2)
-  const randomAction = generateRandomNumber(3);
-  const a = generateRandomNumber(10); // random for choosing adjectives: a, b (max number 9)
-  const b = generateRandomNumber(10);
+const generateCalc = () => {
+  const randomAction = generateRandomNumber(operators.length - 1);
+  const a = generateRandomNumber(maxNumber);
+  const b = generateRandomNumber(maxNumber);
 
-  const questionCalc = `${a} ${mathOperators[randomAction]} ${b}`;
-  const answerCalc = calculate(a, b, mathOperators[randomAction]);
+  const questionCalc = `${a} ${operators[randomAction]} ${b}`;
+  const answerCalc = String(calculate(a, b, operators[randomAction]));
   return [questionCalc, answerCalc];
 };
 
-const descriptionCalc = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
 const runCalc = () => {
-  startAlgoritm(descriptionCalc, generateConsidencesCalc);
+  startAlgoritm(description, generateCalc);
 };
 
 export default runCalc;

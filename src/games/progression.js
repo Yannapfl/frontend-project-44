@@ -1,33 +1,38 @@
 import startAlgoritm from '../index.js';
-import { generateRandomNumber } from './even.js';
+import generateRandomNumber from '../helpers.js';
 
-const generateRound = () => {
-  const firstNumber = generateRandomNumber(10); // 9 is max number
+const maxNumber = 10;
+
+const getProgression = () => {
+  const firstNumber = generateRandomNumber(maxNumber);
   let nextNumber = firstNumber;
-  const d = generateRandomNumber(10); // arithmetic progression difference
+  const d = generateRandomNumber(maxNumber); // arithmetic progression difference
   const numbers = [firstNumber];
   const lengthSeries = 7;
   for (let i = 1; i < lengthSeries; i += 1) {
     nextNumber += d;
     numbers.push(nextNumber);
   }
+  return numbers;
+};
 
+const generateRound = () => {
+  const progressions = getProgression();
   const separator = ' ';
-  const secretIndex = generateRandomNumber(8); // generate random hidden index position
-  const answerProgression = numbers[secretIndex]; // describe right answer
+  const hiddenIndex = generateRandomNumber(progressions.length);
+  const answerProgression = String(progressions[hiddenIndex]);
 
-  const questionNumbers = numbers;
-  questionNumbers[secretIndex] = '..';
+  const questionNumbers = progressions;
+  questionNumbers[hiddenIndex] = '..';
 
   const questionProgression = questionNumbers.join(separator);
   return [questionProgression, answerProgression];
 };
 
-const descriptionProgression = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
 
-// connect variables and functions with index.js
 const runProgression = () => {
-  startAlgoritm(descriptionProgression, generateRound);
+  startAlgoritm(description, generateRound);
 };
 
 export default runProgression;
