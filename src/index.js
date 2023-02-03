@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import greeting from './cli.js';
 
-const startAlgoritm = (description, generateRound) => {
+const startEngine = (description, generateRound) => {
   const userName = greeting();
   console.log(description);
   const countWins = 3;
@@ -11,7 +11,8 @@ const startAlgoritm = (description, generateRound) => {
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (answerGame !== userAnswer) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answerGame}'.\nLet's try again, ${userName}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answerGame}'.`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
     console.log('Correct!');
@@ -19,4 +20,4 @@ const startAlgoritm = (description, generateRound) => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export default startAlgoritm;
+export default startEngine;
