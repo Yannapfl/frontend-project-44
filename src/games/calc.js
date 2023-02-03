@@ -1,36 +1,35 @@
-import startAlgoritm from '../index.js';
+import startEngine from '../index.js';
 import generateRandomNumber from '../helpers.js';
 
 const operators = ['+', '-', '*'];
-const maxNumber = 10;
 
-const calculate = (a, b, operator) => {
+const calculate = (number1, number2, operator) => {
   switch (operator) {
     case '+':
-      return (a + b);
+      return (number1 + number2);
     case '-':
-      return (a - b);
+      return (number1 - number2);
     case '*':
-      return (a * b);
+      return (number1 * number2);
     default:
       throw new Error(`Unknown order state: '${operators}'!`);
   }
 };
 
-const generateCalc = () => {
-  const randomAction = generateRandomNumber(operators.length - 1);
-  const a = generateRandomNumber(maxNumber);
-  const b = generateRandomNumber(maxNumber);
+const generateRound = () => {
+  const randomAction = generateRandomNumber(0, operators.length - 1);
+  const number1 = generateRandomNumber(0, 100);
+  const number2 = generateRandomNumber(0, 100);
 
-  const questionCalc = `${a} ${operators[randomAction]} ${b}`;
-  const answerCalc = String(calculate(a, b, operators[randomAction]));
-  return [questionCalc, answerCalc];
+  const question = `${number1} ${operators[randomAction]} ${number2}`;
+  const answer = String(calculate(number1, number2, operators[randomAction]));
+  return [question, answer];
 };
 
 const description = 'What is the result of the expression?';
 
 const runCalc = () => {
-  startAlgoritm(description, generateCalc);
+  startEngine(description, generateRound);
 };
 
 export default runCalc;

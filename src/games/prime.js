@@ -1,4 +1,4 @@
-import startAlgoritm from '../index.js';
+import startEngine from '../index.js';
 import generateRandomNumber from '../helpers.js';
 
 const isPrime = (number) => {
@@ -10,18 +10,16 @@ const isPrime = (number) => {
   return true;
 };
 
-const maxNumber = 50;
-
-const getPrime = () => {
-  const questionPrime = generateRandomNumber(maxNumber);
-  const answerPrime = isPrime(questionPrime) ? 'yes' : 'no';
-  return [questionPrime, answerPrime];
+const generateRound = () => {
+  const question = generateRandomNumber(0, 50);
+  const answer = isPrime(question) ? 'yes' : 'no';
+  return [question, answer];
 };
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const runPrime = () => {
-  startAlgoritm(description, getPrime);
+  startEngine(description, generateRound);
 };
 
 export default runPrime;

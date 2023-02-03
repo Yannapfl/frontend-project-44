@@ -1,11 +1,11 @@
-import startAlgoritm from '../index.js';
+import startEngine from '../index.js';
 import generateRandomNumber from '../helpers.js';
 
-const countRightAnswerGcd = (a, b) => {
-  // maxGcd is the smallest number of two variables, when a % b === 0 and contrariwise
-  let maxGcd = (a > b) ? b : a;
+const getGCD = (number1, number2) => {
+  // maxGcd is the smallest number of two variables, when number1 % number2 === 0 and contrariwise
+  let maxGcd = (number1 > number2) ? number2 : number1;
   while (maxGcd > 0) {
-    if ((a % maxGcd === 0) && (b % maxGcd === 0)) {
+    if ((number1 % maxGcd === 0) && (number2 % maxGcd === 0)) {
       return maxGcd;
     }
     maxGcd -= 1;
@@ -13,21 +13,19 @@ const countRightAnswerGcd = (a, b) => {
   return maxGcd;
 };
 
-const maxNumber = 100;
+const generateRound = () => {
+  const firstNumber = generateRandomNumber(0, 100);
+  const secondNumber = generateRandomNumber(0, 100);
 
-const getGCD = () => {
-  const firstNumber = generateRandomNumber(maxNumber);
-  const secondNumber = generateRandomNumber(maxNumber);
-
-  const questionGcd = `${firstNumber} ${secondNumber}`;
-  const answerGcd = String(countRightAnswerGcd(firstNumber, secondNumber));
-  return [questionGcd, answerGcd];
+  const question = `${firstNumber} ${secondNumber}`;
+  const answer = String(getGCD(firstNumber, secondNumber));
+  return [question, answer];
 };
 
 const description = 'Find the greatest common divisor of given numbers.';
 
 const runGcd = () => {
-  startAlgoritm(description, getGCD);
+  startEngine(description, generateRound);
 };
 
 export default runGcd;
