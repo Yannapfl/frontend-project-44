@@ -14,8 +14,8 @@ const getGCD = (number1, number2) => {
 };
 
 const generateRound = () => {
-  const firstNumber = generateRandomNumber(0, 100);
-  const secondNumber = generateRandomNumber(0, 100);
+  const firstNumber = generateRandomNumber(1, 100);
+  const secondNumber = generateRandomNumber(1, 100);
 
   const question = `${firstNumber} ${secondNumber}`;
   const answer = String(getGCD(firstNumber, secondNumber));
