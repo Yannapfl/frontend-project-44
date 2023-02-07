@@ -1,21 +1,21 @@
 import startEngine from '../index.js';
 import generateRandomNumber from '../helpers.js';
 
-const getProgression = () => {
-  const firstNumber = generateRandomNumber(0, 10);
+const getProgression = (firstNumber, step) => {
   let nextNumber = firstNumber;
-  const d = generateRandomNumber(0, 10); // arithmetic progression difference
   const numbers = [firstNumber];
   const lengthSeries = 7;
   for (let i = 1; i < lengthSeries; i += 1) {
-    nextNumber += d;
+    nextNumber += step;
     numbers.push(nextNumber);
   }
   return numbers;
 };
 
 const generateRound = () => {
-  const progressions = getProgression();
+  const firstNumber = generateRandomNumber(0, 10);
+  const step = generateRandomNumber(0, 10);
+  const progressions = getProgression(firstNumber, step);
   const separator = ' ';
   const hiddenIndex = generateRandomNumber(0, progressions.length);
   const answer = String(progressions[hiddenIndex]);
