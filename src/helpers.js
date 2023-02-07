@@ -1,6 +1,6 @@
-const generateRandomNumber = (number1, number2) => {
-  const min = Math.ceil(number1);
-  const max = Math.floor(number2);
+const generateRandomNumber = (minimum, maximum) => {
+  const min = Math.ceil(minimum);
+  const max = Math.floor(maximum);
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
