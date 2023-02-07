@@ -16,6 +16,7 @@ const generateRound = () => {
   const firstNumber = generateRandomNumber(0, 10);
   const step = generateRandomNumber(0, 10);
   const progressions = getProgression(firstNumber, step);
+
   const separator = ' ';
   const hiddenIndex = generateRandomNumber(0, progressions.length);
   const answer = String(progressions[hiddenIndex]);
