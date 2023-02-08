@@ -1,13 +1,10 @@
 import startEngine from '../index.js';
 import generateRandomNumber from '../helpers.js';
 
-const getProgression = (firstNumber, step) => {
-  let nextNumber = firstNumber;
+const getProgression = (firstNumber, step, lengthSeries) => {
   const numbers = [firstNumber];
-  const lengthSeries = 7;
   for (let i = 1; i < lengthSeries; i += 1) {
-    nextNumber += step;
-    numbers.push(nextNumber);
+    numbers.push(firstNumber + (step * i));
   }
   return numbers;
 };
@@ -15,7 +12,7 @@ const getProgression = (firstNumber, step) => {
 const generateRound = () => {
   const firstNumber = generateRandomNumber(0, 10);
   const step = generateRandomNumber(0, 10);
-  const progressions = getProgression(firstNumber, step);
+  const progressions = getProgression(firstNumber, step, 7);
 
   const separator = ' ';
   const hiddenIndex = generateRandomNumber(0, progressions.length);
